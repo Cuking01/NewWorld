@@ -23,9 +23,9 @@ void AI_MS::run()
 
 	if(people->fly||people->on_floor())
 	{
-		if(pos.x<people->pos.x-attack_d)
+		if(pos.x<people->pos.x-attack_d+scene->rnd()%50-scene->rnd()%50)
 			move(Dir::left);
-		else if(pos.x>people->pos.x+attack_d)
+		else if(pos.x>people->pos.x+attack_d+scene->rnd()%50-scene->rnd()%50)
 			move(Dir::right);
 	}
 

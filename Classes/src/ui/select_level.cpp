@@ -89,30 +89,27 @@ bool Select_Level::init()
 	levels.push_back(make_level("第一章",exhibitions.back(),"chapter10"));
 
 	exhibitions.push_back(make_exhibition("background/exhibition11.png"));
-	levels.push_back(make_level("间章一·灯塔",exhibitions.back(),"chapter11"));
+	levels.push_back(make_level("间章·灯塔",exhibitions.back(),"chapter11"));
 
-	// exhibitions.push_back(make_exhibition("background/exhibition10.png"));
-	// levels.push_back(make_level("第二章",exhibitions.back(),"chapter10"));
+	exhibitions.push_back(make_exhibition("background/exhibition20.png"));
+	levels.push_back(make_level("第二章",exhibitions.back(),"chapter20"));
 
-	// exhibitions.push_back(make_exhibition("background/exhibition10.png"));
-	// levels.push_back(make_level("间章二",exhibitions.back(),"chapter10"));
+	exhibitions.push_back(make_exhibition("background/exhibition21.png"));
+	levels.push_back(make_level("间章·前夕",exhibitions.back(),"chapter21"));
 
-	// exhibitions.push_back(make_exhibition("background/exhibition10.png"));
-	// levels.push_back(make_level("第二章",exhibitions.back(),"chapter10"));
+	exhibitions.push_back(make_exhibition("background/empty.png"));
+	levels.push_back(make_level("未完待续",exhibitions.back(),"empty"));
 
-	// exhibitions.push_back(make_exhibition("background/exhibition10.png"));
-	// levels.push_back(make_level("第三章",exhibitions.back(),"chapter10"));
+	exhibitions.push_back(make_exhibition("background/empty.png"));
+	levels.push_back(make_level("To be continued",exhibitions.back(),"empty"));
 
-	exhibitions.push_back(make_exhibition("background/exhibition10.png"));
-	levels.push_back(make_level("第四章",exhibitions.back(),"chapter10"));
-
-	exhibitions.push_back(make_exhibition("background/test_exhibition.png"));
-	levels.push_back(make_level("测试关卡",exhibitions.back(),"test"));
+	exhibitions.push_back(make_exhibition("background/empty.png"));
+	levels.push_back(make_level("………",exhibitions.back(),"test"));
 
 
 	level_menu->alignItemsVerticallyWithPadding(40);
 	level_menu->setAnchorPoint(Vec2(0,1));
-	level_menu->setPosition(230,700);
+	level_menu->setPosition(230,520);
 	this->addChild(level_menu);
 
 

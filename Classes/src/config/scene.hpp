@@ -26,4 +26,7 @@ namespace Scenes
 	#include"scenes/test.hpp"
 	#include"scenes/chapter10.hpp"
 	#include"scenes/chapter11.hpp"
+	#include"scenes/chapter20.hpp"
+	#include"scenes/chapter21.hpp"
+	#include"scenes/empty.hpp"
 };

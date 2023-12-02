@@ -13,6 +13,8 @@ void W_Baroque_O_MS::load()
 	buarm = &people->armature["back_upper_arm"].bone;
 	blarm = &people->armature["back_upper_arm"]["back_lower_arm"].bone;
 	fwp = &people->armature["front_upper_arm"]["front_lower_arm"]["baroque_front"].bone;
+	light = &people->armature["front_upper_arm"]["front_lower_arm"]["baroque_light"].bone;
+	light->rotation = 120;
 	bwp = &people->armature["back_upper_arm"]["back_lower_arm"]["baroque_back"].bone;
 	body = &people->armature.bone;
 	fuleg = &people->armature["front_upper_leg"].bone;
@@ -20,8 +22,25 @@ void W_Baroque_O_MS::load()
 	buleg = &people->armature["back_upper_leg"].bone;
 	blleg = &people->armature["back_upper_leg"]["back_lower_leg"].bone;
 	h = &people->armature["head"].bone;
+
+	o1 = &people->armature["front_upper_arm"]["front_lower_arm"]["o1"].bone;
+	o2 = &people->armature["front_upper_arm"]["front_lower_arm"]["o2"].bone;
+	o3 = &people->armature["o3"].bone;
+	o4 = &people->armature["o4"].bone;
+	o5 = &people->armature["o5"].bone;
+	o6 = &people->armature["o6"].bone;
+	o7 = &people->armature["o7"].bone;
+	o8 = &people->armature["o8"].bone;
+	o9 = &people->armature["o9"].bone;
+	o10 = &people->armature["o10"].bone;
+	o11 = &people->armature["o11"].bone;
+
 	people->v_y = 0;
 	cnt = 0;
+
+
+	fwp->visible = false;
+	light->visible = true;
 }
 
 void W_Baroque_O_MS::run()
@@ -29,41 +48,81 @@ void W_Baroque_O_MS::run()
 	cnt++;
 
 	if (cnt <= 10) {
-		fuarm->rotation += 4.5;
-		body->rotation += 1.5;
+		fuarm->rotation += 10;
+		flarm->rotation += 4.5;
+		buarm->rotation -= 6;
+		fuleg->rotation += 3;
+		if (cnt == 5) {
+			fwp->visible = false;
+			light->visible = true;
+		}
+		body->rotation += 3;
 		h->rotation += 4;
 	}
 
-	if (cnt > 10 && cnt <= 20) {
-		fuarm->rotation -= 10;
-		body->rotation -= 2;
+	if (cnt > 40 && cnt <= 50) {
+		buarm->rotation += 6;
+		fuarm->rotation -= 15;
+		flarm->rotation -= 4.5;
+		buleg->rotation += 2;
+		fuleg->rotation -= 4.5;
+		flleg->rotation += 3;
+		body->rotation -= 4;
+		h->rotation -= 4;
+		if (cnt == 45) {
+			o3->visible = true;
+		}
+		if (cnt == 50) {
+			o3->visible = false;
+			o4->visible = true;
+		}
 	}
 
-	if (cnt > 20 && cnt <= 30) {
-		fuarm->rotation -= 4;
-		flarm->rotation += 3;
-		fuleg->rotation -= 5;
-		flleg->rotation += 8;
-		h->rotation -= 7;
-	}
-
-	if (cnt == 25) {
-		people->find_and_attack({ {50,-100},{200,100} }, Damage(people->ATK() * 1.5), 200, { 30,800 }, 25, 50);
+	if (cnt == 55) {
+		people->find_and_attack({ {50,-100},{200,100} }, Damage(people->ATK() * 2.0), 200, { 0,0 }, 25, 50);
 		scene->shake(50);
-		people->displace({ 12, 0 });
-		people->v_y = 0;
+		o1->visible = true;
+		o4->visible = false;
+		o5->visible = true;
 	}
 
-	if (cnt > 35 && cnt <= 45) {
-		fuarm->rotation += 9.5;
-		flarm->rotation -= 3;
-		body->rotation += 0.5;
-		fuleg->rotation += 5;
-		flleg->rotation -= 8;
-		h->rotation += 3;
+	if (cnt == 60) {
+		o1->visible = false;
+		o2->visible = true;
+		o5->visible = false;
 	}
 
-	if (cnt == 45) {
+	if (cnt >= 65 && cnt <= 85) {
+		if (cnt == 65) {
+			o2->visible = false;
+			o6->visible = true;
+		}
+		people->find_and_attack({ {50,-300},{200,300} }, Damage(people->ATK() * 2.0), 200, { 0,1500 }, 25, 50);
+
+		if (cnt == 68) {
+			o6->visible = false;
+			o7->visible = true;
+		}
+		if (cnt == 71) {
+			o7->visible = false;
+			o8->visible = true;
+		}
+		if (cnt == 74) {
+			o8->visible = false;
+			o9->visible = true;
+		}
+		if (cnt == 77) {
+			o9->visible = false;
+			o10->visible = true;
+		}
+		if (cnt == 81) {
+			o10->visible = false;
+			o11->visible = true;
+		}
+		people->displace({ 0, 25 });
+	}
+	if (cnt == 85) o11->visible = false;
+	if (cnt == 100) {
 		people->set_ms(people->default_ms);
 	}
 }
@@ -80,9 +139,25 @@ void W_Baroque_O_MS::unload()
 	flleg->rotation = 0;
 	buleg->rotation = 0;
 	blleg->rotation = 0;
+
+	fwp->visible = true;
+	light->visible = false;
+
+	o1->visible = false;
+	o2->visible = false;
+	o3->visible = false;
+	o4->visible = false;
+	o5->visible = false;
+	o6->visible = false;
+	o7->visible = false;
+	o8->visible = false;
+	o9->visible = false;
+	o10->visible = false;
+	o11->visible = false;
+
 	cnt = 0;
 }
-/*==================================O=============================================*/
+
 W_Baroque_O::W_Baroque_O(Scene* scene, People* people, Weapon* weapon, const ::Config::Skill& con) :
 	Skill(scene, people, weapon, con),
 	ms(scene, people)

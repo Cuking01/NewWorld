@@ -17,9 +17,13 @@ void Death::run()
 		people->box.r.y+=box_dy*0.005;
 	}
 	
-	if(cnt==150&&people!=scene->main)
-	{
-		scene->erase_people(people->handle);
+	if(cnt==150){
+		if(people!=scene->main)
+		{
+			scene->erase_people(people->handle);
+		}else{
+			scene->end();
+		}
 	}
 }
 void Death::move(Dir){}

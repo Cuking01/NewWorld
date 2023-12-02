@@ -522,7 +522,7 @@ void main_init()
 					}
 				},
 				{
-					"o6",
+					"crescent_o6",
 					Armature
 					{
 						.bone =
@@ -538,7 +538,7 @@ void main_init()
 					}
 				},
 				{
-					"o7",
+					"crescent_o7",
 					Armature
 					{
 						.bone =
@@ -554,7 +554,7 @@ void main_init()
 					}
 				},
 				{
-					"o8",
+					"crescent_o8",
 					Armature
 					{
 						.bone =
@@ -570,7 +570,7 @@ void main_init()
 					}
 				},
 				{
-					"o9",
+					"crescent_o9",
 					Armature
 					{
 						.bone =
@@ -686,8 +686,8 @@ void main_init()
 		.default_ms="general",
 
 	};
-	people.weapons[0]="baroque";
-	people.weapons[1]="crescent";
+	people.weapons[0]="crescent";
+	people.weapons[1]="baroque";
 	people.weapons[2]="sword";
 
 	people.skill[1]="p_main_dash";

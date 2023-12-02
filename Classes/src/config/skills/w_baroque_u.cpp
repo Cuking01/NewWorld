@@ -20,6 +20,15 @@ void W_Baroque_U_MS::load()
 	buleg = &people->armature["back_upper_leg"].bone;
 	blleg = &people->armature["back_upper_leg"]["back_lower_leg"].bone;
 	h = &people->armature["head"].bone;
+
+	u[0] = &people->armature["front_upper_leg"]["front_lower_leg"]["u1"].bone;
+	u[1] = &people->armature["front_upper_leg"]["front_lower_leg"]["u2"].bone;
+	u[2] = &people->armature["front_upper_leg"]["front_lower_leg"]["u3"].bone;
+	u[3] = &people->armature["front_upper_leg"]["front_lower_leg"]["u4"].bone;
+	u[4] = &people->armature["front_upper_leg"]["front_lower_leg"]["u5"].bone;
+
+	for (int i = 0; i < 5; i++) u[i]->rotation = 55;
+
 	people->v_y = 0;
 	cnt = 0;
 	s.clear();
@@ -55,10 +64,14 @@ void W_Baroque_U_MS::run()
 		flleg->rotation = 0;
 		buleg->rotation = 40;
 		blleg->rotation = 90;
+		u[0]->visible = true;
 	}
 	
-	if (cnt > 30) {
-		people->displace({15, -15});
+
+	if (cnt >= 30) {
+		if (cnt % 2 == 0) u[cnt / 2 % 5]->visible = false;
+		u[(cnt / 2 + 1) % 5]->visible = true;
+		people->displace({10, -10});
 		if (cnt & 1) people->find_and_attack({ {50,-100},{200,100} }, Damage(people->ATK() * 1.5), 200, { 50,0 }, 25, 50);
 		auto tmp = people->find_enemy({ { 50,-100 }, { 200,100 } });
 		for (auto v : tmp) {
@@ -68,6 +81,7 @@ void W_Baroque_U_MS::run()
 			}
 		}
 		if (people->on_floor()){
+		//if (cnt == 1000) {
 			people->set_ms(people->default_ms);
 		}
 	}
@@ -85,9 +99,10 @@ void W_Baroque_U_MS::unload()
 	flleg->rotation = 0;
 	buleg->rotation = 0;
 	blleg->rotation = 0;
+	for (int i = 0; i < 5; i++) u[i]->visible = false;
 	cnt = 0;
 }
-/*==================================U=============================================*/
+
 W_Baroque_U::W_Baroque_U(Scene* scene, People* people, Weapon* weapon, const ::Config::Skill& con) :
 	Skill(scene, people, weapon, con),
 	ms(scene, people)

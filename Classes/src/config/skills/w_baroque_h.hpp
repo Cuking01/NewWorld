@@ -4,7 +4,8 @@ struct W_Baroque_H_MS :Move_State
 {
 	s2 cnt;
 
-	Bone* fuarm, * flarm, * buarm, * blarm, * fwp, * bwp, * body, * fuleg, * flleg, * buleg, * blleg, * h;
+	Bone* fuarm, * flarm, * buarm, * blarm, * fwp, * bwp, * body, * fuleg,
+		* flleg, * buleg, * blleg, * h, * h1, * h2, * h3, * h4, * h5, * h6;
 
 	W_Baroque_H_MS(Scene* scene, People* people);
 
@@ -19,7 +20,10 @@ struct W_Baroque_HS_MS :Move_State
 {
 	s2 cnt;
 
-	Bone* fuarm, * flarm, * buarm, * blarm, * fwp, * bwp, * body, * fuleg, * flleg, * buleg, * blleg, * h;
+	//Armature* h1, * h2, * h3, * h4, * h5, * h6;
+
+	Bone* fuarm, * flarm, * buarm, * blarm, * fwp, * bwp, * body, * fuleg,
+		* flleg, * buleg, * blleg, * h;
 
 	W_Baroque_HS_MS(Scene* scene, People* people);
 

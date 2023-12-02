@@ -56,7 +56,8 @@ void Freeze::be_attack(const Damage&damage,f3 hit_intensity,Vector impact_dir,s2
 					people->freeze_protection=false;
 				}}
 			);
-			people->armature.bone.opacity=150;
+			// people->armature.bone.opacity=150;
+			people->armature.set_opacity(150);
 			for (int i = 0;i < 5;i++)
 			{
 				scene->task_q.add(scene->time+40*(i+1),
@@ -64,8 +65,8 @@ void Freeze::be_attack(const Damage&damage,f3 hit_intensity,Vector impact_dir,s2
 					{
 						People*people=handle;
 						if(people==nullptr)return;
-					
-						people->armature.bone.opacity=i%2?150:255;
+						if(i%2)people->armature.set_opacity(150);
+						else people->armature.set_opacity(255);
 					}}
 				);
 			}

@@ -36,9 +36,13 @@ namespace Skills
 	#include "skills/w_sword_attack.cpp"
 	#include "skills/w_sword_strike.cpp"
 	#include "skills/w_sword_u.cpp"
+	#include "skills/w_sword_i.cpp"
 
 	#include"skills/p_main_dash.cpp"
 	#include"skills/p_redlizard_assassinate.cpp"
+	#include"skills/p_robotboss_attack.cpp"
+	#include"skills/p_bear_attack.cpp"
+	#include"skills/p_robot2_attack.cpp"
 };
 
 void skill_init()
@@ -59,7 +63,12 @@ void skill_init()
 	Skills::w_sword_attack_init();
 	Skills::w_sword_strike_init();
 	Skills::w_sword_u_init();
+	Skills::w_sword_i_init();
 
 	Skills::p_main_dash_init();
+
 	Skills::p_redlizard_assassinate_init();
+	Skills::p_robotboss_attack_init();
+	Skills::p_bear_attack_init();
+	Skills::p_robot2_attack_init();
 }

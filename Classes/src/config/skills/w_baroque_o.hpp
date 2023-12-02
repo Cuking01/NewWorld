@@ -1,10 +1,12 @@
 #pragma once
-
+/*==================================ÉýÁúÈ­=============================================*/
 struct W_Baroque_O_MS :Move_State
 {
 	s2 cnt;
 
-	Bone* fuarm, * flarm, * buarm, * blarm, * fwp, * bwp, * body, * fuleg, * flleg, * buleg, * blleg, * h;
+	Bone* fuarm, * flarm, * buarm, * blarm, * fwp, * bwp, * body, * fuleg,
+		* flleg, * buleg, * blleg, * h, * light, * o1, * o2, * o3, * o4, * o5, * o6,
+		* o7, * o8, * o9, * o10, * o11;
 
 	W_Baroque_O_MS(Scene* scene, People* people);
 

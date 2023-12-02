@@ -16,4 +16,3 @@ bool Help::init()
 	background->getEventDispatcher()->addEventListenerWithSceneGraphPriority(mouseListener,background);
 	return true;
 }
-

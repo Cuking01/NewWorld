@@ -36,6 +36,11 @@ void W_Baroque_I_MS::load()
 	e5 = &people->armature["e5"];
 	e6 = &people->armature["e6"];
 
+	i1 = &people->armature["back_upper_leg"]["back_lower_leg"]["i1"];
+	i2 = &people->armature["back_upper_leg"]["back_lower_leg"]["i2"];
+	i3 = &people->armature["back_upper_leg"]["back_lower_leg"]["i3"];
+	i4 = &people->armature["back_upper_leg"]["back_lower_leg"]["i4"];
+
 	people->v_y = 0;
 	cnt = 0;
 }
@@ -49,28 +54,43 @@ void W_Baroque_I_MS::run()
 		e1->set_opacity(255);
 	}
 	else if (cnt <= 10) {
+		people->displace({ -5, 0 });
 		(e1->bone).visible = false;
 		(e2->bone).visible = true;
 		e2->set_opacity(255);
-		people->find_and_attack({ {25,-100},{125,100} }, Damage(people->ATK() * 1.5), 200, { 20,200 }, 25, 50);
+		(i1->bone).visible = true;
+		i1->set_opacity(255);
+		people->find_and_attack({ {-200,-100},{200,100} }, Damage(people->ATK() * 0.1), 200, { 20,200 }, 25, 50);
 	}
 	else if (cnt <= 15) {
+		people->displace({ -5, 0 });
 		(e2->bone).visible = false;
 		(e3->bone).visible = true;
 		e3->set_opacity(255);
-		people->find_and_attack({ {25,-100},{125,100} }, Damage(people->ATK() * 1.5), 200, { 20,200 }, 25, 50);
+		(i1->bone).visible = false;
+		(i2->bone).visible = true;
+		i2->set_opacity(255);
+		people->find_and_attack({ {-200,-100},{200,100} }, Damage(people->ATK() * 0.1), 200, { 20,200 }, 25, 50);
 	}
 	else if (cnt <= 20) {
+		people->displace({ -5, 0 });
 		(e3->bone).visible = false;
 		(e4->bone).visible = true;
 		e4->set_opacity(255);
-		people->find_and_attack({ {25,-100},{125,100} }, Damage(people->ATK() * 1.5), 200, { 20,200 }, 25, 50);
+		(i2->bone).visible = false;
+		(i3->bone).visible = true;
+		i3->set_opacity(255);
+		people->find_and_attack({ {-200,-100},{200,100} }, Damage(people->ATK() * 0.1), 200, { 20,200 }, 25, 50);
 	}
 	else if (cnt <= 25) {
+		people->displace({ -5, 0 });
 		(e4->bone).visible = false;
 		(e5->bone).visible = true;
 		e5->set_opacity(255);
-		people->find_and_attack({ {25,-100},{125,100} }, Damage(people->ATK() * 1.5), 200, { 20,200 }, 25, 50);
+		(i3->bone).visible = false;
+		(i4->bone).visible = true;
+		i4->set_opacity(255);
+		people->find_and_attack({ {-200,-100},{200,100} }, Damage(people->ATK() * 0.1), 200, { 20,200 }, 25, 50);
 	}
 	else if (cnt <= 30) {
 		(e5->bone).visible = false;
@@ -78,6 +98,7 @@ void W_Baroque_I_MS::run()
 		e6->set_opacity(255);
 	}
 	else {
+		(i4->bone).visible = false;
 		(e6->bone).visible = false;
 		people->set_ms(people->default_ms);
 	}
@@ -105,6 +126,11 @@ void W_Baroque_I_MS::unload()
 	(e4->bone).visible = false;
 	(e5->bone).visible = false;
 	(e6->bone).visible = false;
+	(i1->bone).visible = false;
+	(i2->bone).visible = false;
+	(i3->bone).visible = false;
+	(i4->bone).visible = false;
+
 	(*people).armature.set_opacity(255);
 
 	cnt = 0;

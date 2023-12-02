@@ -57,10 +57,10 @@ void W_Crescent_O_MS::load(){
 	o4=&people->armature["atk14"];
 	o5=&people->armature["atk15"];
 
-	o6=&people->armature["o6"];
-	o7=&people->armature["o7"];
-	o8=&people->armature["o8"];
-	o9=&people->armature["o9"];
+	o6=&people->armature["crescent_o6"];
+	o7=&people->armature["crescent_o7"];
+	o8=&people->armature["crescent_o8"];
+	o9=&people->armature["crescent_o9"];
 }
 
 void W_Crescent_O_MS::run()
@@ -95,7 +95,7 @@ void W_Crescent_O_MS::run()
 	}else if(cnt<=32){
 		update(o7,o8);
 		if(cnt==30){
-			scene->pause_for(60);
+			scene->pause_for(20);
 			scene->shake(50);
 		}
 		people->displace({0,30});

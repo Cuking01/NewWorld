@@ -9,7 +9,7 @@ void robot2_init()
 		.name=L"机器人二号",
 		.attributes=
 		{
-			.HP_lim={1000000,5},
+			.HP_lim={150,5},
 			.ATK={20,1},
 			.DEF={20,0},
 			.HARD={50,0},
@@ -94,9 +94,9 @@ void robot2_init()
 				}
 			}
 		},
-		.default_ms="target_default",
+		.default_ms="robot2_default",
 
 	};
-
+	people.skill[0]="p_robot2_attack";
 	people_table["robot2"]=std::move(people);
 }

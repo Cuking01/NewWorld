@@ -6,7 +6,8 @@ struct W_Baroque_Attack_MS :Move_State
 	s2 cnt;
 	s2 next_flag;
 
-	Bone* fuarm, * flarm,* buarm, * blarm, * fwp, * bwp, * body, * fuleg, * flleg, * buleg, * blleg, *h;
+	Bone* fuarm, * flarm,* buarm, * blarm, * fwp, * bwp, * body, * fuleg, * flleg,
+		* buleg, * blleg, *h, *j1;
 
 	W_Baroque_Attack_MS (Scene* scene, People* people);
 

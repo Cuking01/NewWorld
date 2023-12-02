@@ -103,11 +103,42 @@ void bear_init()
 							//.visible = false
 						}
 					}
+				},
+				{
+					"atk11",
+					Armature
+					{
+						.bone=
+						{
+							.name="atk11",
+							.file_name=path+"atk11",
+							.anchor={0.5,0.5},
+							.pos={217,180},
+							.zorder=1,
+							.visible = false
+						}
+					}
+				},
+				{
+					"atk12",
+					Armature
+					{
+						.bone=
+						{
+							.name="atk12",
+							.file_name=path+"atk12",
+							.anchor={0.5,0.5},
+							.pos={217,180},
+							.zorder=1,
+							.visible = false
+						}
+					}
 				}
 			}
 		},
-		.default_ms="target_default",
+		.default_ms="bear_default",
 
 	};
+	people.skill[0]="p_bear_attack";
 	people_table["bear"]=std::move(people);
 }

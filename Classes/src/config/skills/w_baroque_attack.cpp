@@ -20,6 +20,7 @@ void W_Baroque_Attack_MS::load()
 	buleg = &people->armature["back_upper_leg"].bone;
 	blleg = &people->armature["back_upper_leg"]["back_lower_leg"].bone;
 	h = &people->armature["head"].bone;
+	j1 = &people->armature["j1"].bone;
 	people->v_y = 0;
 	cnt = 0;
 }
@@ -35,9 +36,13 @@ void W_Baroque_Attack_MS::run()
 		h->rotation += 0.25;
 	}
 
-
 	if (cnt == 10) {
+		auto tmp = people->find_enemy({ {50,-100},{200,100} });
 		people->find_and_attack({ {50,-100},{200,100} }, Damage(people->ATK() * 1.5), 200, { 50,0 }, 25, 50);
+		if (tmp.size()) j1->visible = true;
+	}
+	if (cnt == 15) {
+		j1->visible = false;
 	}
 
 	if (cnt > 15 && cnt <= 25) {
@@ -50,7 +55,12 @@ void W_Baroque_Attack_MS::run()
 	}
 
 	if (cnt == 25) {
+		auto tmp = people->find_enemy({ {50,-100},{200,100} });
 		people->find_and_attack({ {50,-100},{200,100} }, Damage(people->ATK() * 1.5), 200, { 50,0 }, 25, 50);
+		if(tmp.size()) j1->visible = true;
+	}
+	if (cnt == 30) {
+		j1->visible = false;
 	}
 
 	if (cnt > 30 && cnt <= 40) {
@@ -77,6 +87,7 @@ void W_Baroque_Attack_MS::unload()
 	flleg->rotation = 0;
 	buleg->rotation = 0;
 	blleg->rotation = 0;
+	j1->visible = false;
 	cnt = 0;
 	people->v_y = 0;
 }

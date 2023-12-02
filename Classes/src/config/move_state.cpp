@@ -14,9 +14,20 @@ namespace Move_States
 	using ::Scene::People;
 	using ::Scene::Move_State;
 	using ::Scene::AI_MS;
+
+	using ::Scene::Weapon;
+	using ::Scene::Skill;
+	using ::Scene::Bone;
+	using ::Scene::Damage;
+	using ::Scene::Armature;
+	using ::Scene::Dir;
+	
 	
 	#include"move_states/target_default.cpp"
 	#include"move_states/redlizard_default.cpp"
+	#include"move_states/bear_default.cpp"
+	#include"move_states/robotboss_default.cpp"
+	#include"move_states/robot2_default.cpp"
 };
 
 
@@ -56,4 +67,7 @@ void ms_init()
 
 	Move_States::target_default_init();
 	Move_States::redlizard_default_init();
+	Move_States::bear_default_init();
+	Move_States::robotboss_default_init();
+	Move_States::robot2_default_init();
 }

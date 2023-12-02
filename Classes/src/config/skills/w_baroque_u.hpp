@@ -1,10 +1,11 @@
 #pragma once
-
+/*==================================ÐÇÂä(Ð±ÏòÏÂ)=============================================*/
 struct W_Baroque_U_MS :Move_State
 {
 	s2 cnt;
 
-	Bone* fuarm, * flarm, * buarm, * blarm, * fwp, * bwp, * body, * fuleg, * flleg, * buleg, * blleg, * h;
+	Bone* fuarm, * flarm, * buarm, * blarm, * fwp, * bwp, * body, * fuleg,
+		* flleg, * buleg, * blleg, * h, * u[5];
 
 	W_Baroque_U_MS(Scene* scene, People* people);
 	std::set<People*> s;

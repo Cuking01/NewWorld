@@ -36,6 +36,7 @@ namespace Peoples
 	#include "peoples/priest.hpp"
 	#include "peoples/robot2.hpp"
 	#include "peoples/robotboss.hpp"
+	#include "peoples/robotgreen.hpp"
 	#include "peoples/soldier_spear.hpp"
 	#include "peoples/wildboar.hpp"
 };

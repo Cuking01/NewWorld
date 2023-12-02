@@ -19,6 +19,7 @@ namespace Peoples
 	#include "peoples/priest.cpp"
 	#include "peoples/robot2.cpp"
 	#include "peoples/robotboss.cpp"
+	#include "peoples/robotgreen.cpp"
 	#include "peoples/soldier_spear.cpp"
 	#include "peoples/wildboar.cpp"
 };
@@ -34,6 +35,7 @@ void people_init()
 	Peoples::priest_init();
 	Peoples::robot2_init();
 	Peoples::robotboss_init();
+	Peoples::robotgreen_init();
 	Peoples::soldier_spear_init();
 	Peoples::wildboar_init();
 	//..

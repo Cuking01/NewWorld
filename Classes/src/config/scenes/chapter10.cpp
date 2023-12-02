@@ -4,7 +4,7 @@ Chapter10::Chapter10(::Scene::Scene*scene):Progress(scene){
 	scene->people_max={9000,1500};
 	scene->camera_min={0,0};
 	scene->camera_max={7500,200};
-	this->scene->bgm_file="music/out_of_darkness.mp3";
+	
 	add_task(
 	{
 		true,
@@ -15,6 +15,7 @@ Chapter10::Chapter10(::Scene::Scene*scene):Progress(scene){
 		[this]()
 		{
 			// this->scene->background_file="background/room",
+			this->scene->main->alive=false;
 			this->scene->main->armature.bone.visible=false;
 			this->scene->dialog_file="dialog10_0";
 			this->scene->set_ss(&this->scene->dialog_ss);
@@ -81,7 +82,6 @@ Chapter10::Chapter10(::Scene::Scene*scene):Progress(scene){
 			this->scene->prospect_file="background/test_prospect",
 			this->scene->prospect_scale=0.5,
 			this->scene->bgm_file="music/out_of_darkness.mp3",
-			//this->scene->background_file="background/room_morning";
 
 			this->scene->dialog_file="dialog10_4";
 			this->scene->set_ss(&this->scene->dialog_ss);
@@ -99,15 +99,52 @@ Chapter10::Chapter10(::Scene::Scene*scene):Progress(scene){
 		},
 		[this]()
 		{
+			this->scene->main->alive=true;
 			this->scene->main->armature.bone.visible=true;
-
 			this->scene->dialog_file="";
+			for(int i=0;i<2;i++)
+			{
+				auto*p=(::Scene::People*)this->scene->create_people("robot2",0);
+				p->pos.x-=i*600;
+			}
+			j=6;
+		}
+	});
+
+	add_task(
+	{
+		true,
+		[this]()
+		{
+			return j==6&&this->scene->ss!=&this->scene->dialog_ss &&this->scene->peoples.size()==1&&this->scene->main->alive;
+		},
+		[this]()
+		{
+			for(int i=0;i<5;i++)
+			{
+				auto*p=(::Scene::People*)this->scene->create_people("robot2",0);
+				p->pos.x-=i*300;
+			}
+			j=7;
+		}
+	});
+
+	add_task(
+	{
+		true,
+		[this]()
+		{
+			return j==7&&this->scene->ss!=&this->scene->dialog_ss &&this->scene->peoples.size()==1&&this->scene->main->alive;
+		},
+		[this]()
+		{
+			this->scene->create_people("robotboss",0);
 			for(int i=0;i<3;i++)
 			{
-				auto*p=(::Scene::People*)this->scene->create_people("redlizard",0);
+				auto*p=(::Scene::People*)this->scene->create_people("robot2",0);
 				p->pos.x-=i*400;
 			}
-			j=5;
+			j=8;
 		}
 	});
 	//结束
@@ -116,13 +153,13 @@ Chapter10::Chapter10(::Scene::Scene*scene):Progress(scene){
 		true,
 		[this]()
 		{
-			return j==5&&this->scene->peoples.size()==1&&this->scene->main->alive&&this->scene->ss!=&this->scene->dialog_ss;
+			return j==8&&this->scene->peoples.size()==1&&this->scene->main->alive&&this->scene->ss!=&this->scene->dialog_ss;
 		},
 		[this]()
 		{
 			this->scene->dialog_file="victory";
 			this->scene->set_ss(&this->scene->dialog_ss);
-			j=6;
+			j=9;
 		}
 	});
 
@@ -131,11 +168,12 @@ Chapter10::Chapter10(::Scene::Scene*scene):Progress(scene){
 		true,
 		[this]()
 		{
-			return j==6&&this->scene->ss!=&this->scene->dialog_ss;
+			return j==9&&this->scene->ss!=&this->scene->dialog_ss;
 		},
 		[this]()
 		{
-			this->scene->dialog_file="empty";
+			this->scene->bgm_file="",
+			this->scene->dialog_file="";
 			this->scene->end();
 		},
 	});

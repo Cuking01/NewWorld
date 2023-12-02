@@ -17,6 +17,17 @@ namespace Move_States
 	using ::Scene::Move_State;
 	using ::Scene::AI_MS;
 
+	using ::Scene::Weapon;
+	using ::Scene::Skill;
+	using ::Scene::Bone;
+	using ::Scene::Damage;
+	using ::Scene::Armature;
+	using ::Scene::Dir;
+
 	#include"move_states/target_default.hpp"
 	#include"move_states/redlizard_default.hpp"
+	#include"move_states/bear_default.hpp"
+	#include"move_states/robotboss_default.hpp"
+	#include"move_states/robot2_default.hpp"
+	// #include"move_states/b
 };

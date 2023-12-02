@@ -15,13 +15,8 @@ Test_Progress::Test_Progress(::Scene::Scene*scene):
 		},
 		[this]()
 		{
-			this->scene->create_people("bear",0);
-			for(int i=0;i<3;i++)
-			{
-				auto*p=(::Scene::People*)this->scene->create_people("redlizard",0);
-				p->pos.x-=i*400;
-			}
-			j=1;
+			this->scene->dialog_file="";
+			this->scene->create_people("robot2",0);
 		}
 	});
 
@@ -64,7 +59,7 @@ void test_init()
 		.bgm_file="music/out_of_darkness.mp3",
 		.prospect_scale=0.6,
 		.main="main",
-		.peoples={"redlizard"},
+		// .peoples={"redlizard"},
 		.initor=[](::Scene::Scene*scene)
 		{
 			auto*p=new Test_Progress(scene);

@@ -10,8 +10,9 @@ struct W_Baroque_IE_MS :Move_State
 struct W_Baroque_I_MS :Move_State
 {
 	s2 cnt;
-	Armature* e1, * e2, * e3, * e4, * e5, * e6;
-	Bone* fuarm, * flarm, * buarm, * blarm, * fwp, * bwp, * body, * fuleg, * flleg, * buleg, * blleg, * h;
+	Armature* e1, * e2, * e3, * e4, * e5, * e6, * i1, * i2, * i3, * i4;
+	Bone* fuarm, * flarm, * buarm, * blarm, * fwp, * bwp, * body,
+		* fuleg, * flleg, * buleg, * blleg, * h;
 
 	W_Baroque_I_MS(Scene* scene, People* people);
 

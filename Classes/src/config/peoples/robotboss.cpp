@@ -9,8 +9,8 @@ void robotboss_init()
 		.name = L"机器人Boss",
 		.attributes =
 		{
-			.HP_lim = {1000000,5},
-			.ATK = {20,1},
+			.HP_lim = {1200,5},
+			.ATK = {25,1},
 			.DEF = {20,0},
 			.HARD = {50,0},
 			.SPEED = {100,0},
@@ -71,7 +71,7 @@ void robotboss_init()
 							.file_name = path + "back_upper_arm",
 							.anchor = {0.36,0.85},
 							.pos = {253,208},
-							.zorder = 1
+							.zorder = -1
 						},
 						.sons =
 						{
@@ -94,9 +94,9 @@ void robotboss_init()
 				}
 			}
 		},
-		.default_ms = "target_default",
+		.default_ms = "robotboss_default",
 
 	};
-
+	people.skill[0]="p_robotboss_attack";
 	people_table["robotboss"] = std::move(people);
 }

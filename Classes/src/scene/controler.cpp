@@ -94,7 +94,7 @@ Controler::Controler(std::string scene_key,s2 level,Node*node):
 	content->setPosition(100,600);
 	content->setLineBreakWithoutSpace(true);
 	content->setColor(Color3B(0,0,0));
-	content->setWidth(1400);
+	content->setWidth(1700);
 	dialog->addChild(content);
 
 	

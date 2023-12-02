@@ -1,5 +1,5 @@
 #pragma once
-
+/*==================================…œπ¥»≠=============================================*/
 W_Baroque_H_MS::W_Baroque_H_MS(Scene* scene, People* people) :
 	Move_State(scene, people, 100)
 {
@@ -20,6 +20,14 @@ void W_Baroque_H_MS::load()
 	buleg = &people->armature["back_upper_leg"].bone;
 	blleg = &people->armature["back_upper_leg"]["back_lower_leg"].bone;
 	h = &people->armature["head"].bone;
+
+	h1 = &people->armature["h1"].bone;
+	h2 = &people->armature["h2"].bone;
+	h3 = &people->armature["h3"].bone;
+	h4 = &people->armature["h4"].bone;
+	h5 = &people->armature["h5"].bone;
+	h6 = &people->armature["h6"].bone;
+
 	people->v_y = 0;
 	cnt = 0;
 }
@@ -31,7 +39,7 @@ void W_Baroque_H_MS::run()
 	if (cnt <= 10) {
 		fuarm->rotation += 4.5;
 		body->rotation += 1.5;
-		h->rotation += 4;
+		h->rotation += 3;
 	}
 
 	if (cnt > 10 && cnt <= 20) {
@@ -40,17 +48,37 @@ void W_Baroque_H_MS::run()
 	}
 
 	if (cnt > 20 && cnt <= 30) {
+		h1->visible = true;
+		if (cnt > 25) {
+			h1->visible = false;
+			h2->visible = true;
+		}
+		if (cnt == 30) {
+			h2->visible = false;
+			h3->visible = true;
+		}
 		fuarm->rotation -= 4;
 		flarm->rotation += 3;
 		fuleg->rotation -= 5;
 		flleg->rotation += 8;
-		h->rotation -= 7;
+		h->rotation -= 4;
+	}
+	if (cnt > 30) {
+		h3->visible = false;
+		h4->visible = true;
+	}
+	if (cnt > 35) {
+		h4->visible = false;
+		h5->visible = true;
+	}
+	if (cnt > 40) {
+		h5->visible = false;
+		h6->visible = true;
 	}
 
 	if (cnt == 25) {
 		people->find_and_attack({ {50,-100},{200,100} }, Damage(people->ATK() * 1.5), 200, { 30,800 }, 25, 50);
 		scene->shake(50);
-		scene->pause_for(50);
 		people->displace({ 12, 0 });
 		people->v_y = 0;
 	}
@@ -65,12 +93,20 @@ void W_Baroque_H_MS::run()
 	}
 
 	if (cnt == 45) {
+		h6->visible = false;
 		people->set_ms(people->default_ms);
 	}
 }
 
 void W_Baroque_H_MS::unload()
 {
+	h1->visible = false;
+	h2->visible = false;
+	h3->visible = false;
+	h4->visible = false;
+	h5->visible = false;
+	h6->visible = false;
+
 	h->rotation = 0;
 	body->rotation = 0;
 	fuarm->rotation = -45;
@@ -84,6 +120,7 @@ void W_Baroque_H_MS::unload()
 	cnt = 0;
 }
 
+/*==================================ƒŒ¬‰¬‰=============================================*/
 W_Baroque_HS_MS::W_Baroque_HS_MS(Scene* scene, People* people) :
 	Move_State(scene, people, 100)
 {
@@ -164,12 +201,12 @@ W_Baroque_H::W_Baroque_H(Scene* scene, People* people, Weapon* weapon, const ::C
 void W_Baroque_H::use(bool down, bool up)
 {
 	if (!people->on_floor()) {
-		if (down) {
+		if (down) {  //ƒŒ¬‰¬‰
 			people->set_ms(&ms_hs); //S+H
 		}
 	}
 	else {
-	   	people->set_ms(&ms);
+	   	people->set_ms(&ms); //…œπ¥»≠H
 	}
 }
 

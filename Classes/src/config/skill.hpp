@@ -40,7 +40,11 @@ namespace Skills
 	#include "skills/w_sword_attack.hpp"
 	#include "skills/w_sword_strike.hpp"
 	#include "skills/w_sword_u.hpp"
+	#include "skills/w_sword_i.hpp"
 
 	#include"skills/p_main_dash.hpp"
 	#include"skills/p_redlizard_assassinate.hpp"
+	#include"skills/p_robotboss_attack.hpp"
+	#include"skills/p_bear_attack.hpp"
+	#include"skills/p_robot2_attack.hpp"
 };
